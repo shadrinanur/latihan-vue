@@ -1,0 +1,78 @@
+<script setup>
+import { BaseTransitionPropsValidators, ref } from 'vue'
+const msg = "Hello World"
+const headName = "<h1>Shadrina<h1>"
+const link = "https://vuejs.org/"
+let number = 1;
+let ok = "NO";
+let seen = true; // 1 atau 0
+//Split Reverse Message
+let Message = ref("Hai Vue");
+ function balikkanPesan() {
+ Message.value = Message.value.split('').reverse().join('');
+ }
+let todos = [
+  { teks: 'Belajar JavaScript'},
+  { teks : 'Belajar Vue'},
+  { teks : 'Buat Proyek Keren'}
+]
+let pesan = ref("Hai Vue");
+let a= 20
+let b= 10
+let c = a+b
+
+let data = [
+  {nama:'Shadrina', kelas:'XII RPL 1', Jurusan:'RPL'},
+  {nama:'Ajeng', kelas:'XII RPL 1', Jurusan:'RPL'},
+  {nama:'Julis', kelas:'XII RPL 2', Jurusan:'RPL'},
+  {nama:'Linda', kelas:'XII RPL 1', Jurusan:'RPL'},
+  {nama:'Intan', kelas:'XII RPL 2', Jurusan:'RPL'}
+]
+</script>
+
+<template>
+  <div id="app">
+    <h1>{{ msg }}</h1><br>
+    <span v-html="headName"></span><br>
+    <span style="color: blueviolet;">Tulisan ini berwarna ungu</span><br>
+    <button v-bind:disabled="isButtonDisabled">Tombol</button> <br>
+    {{ number + 1 }}<br>
+    {{ Message.split('').reverse().join('') }} <br>
+    <p v-if="seen">Sekarang anda bisa melihatku</p> <br>
+    <a v-bind:href="link">VUE</a>
+    <br>
+    bilangan 1 = {{ a }} <br>
+    bilangan 2 = {{ b }} <br>
+    hasil bilangan1 + bilangan2 = {{  c }} <br>
+    {{  ok ? 'YES' : 'NO' }} <br>
+    
+    
+  </div>
+
+  <p>{{ Message }}</p>
+  <button v-on:click="balikkanPesan">Balikkan Pesan</button> <br>
+
+  Pengulangan 
+  <ol>
+    <li v-for="todo in todos">
+    {{ todo.teks }}
+    </li>
+  </ol>
+  <p>{{ pesan }}</p>
+  <input v-model="pesan">
+
+  <table border="1">
+    <tr>
+      <th>No</th>
+      <th>Nama</th>
+      <th>Kelas</th>
+      <th>Jurusan</th>
+    </tr>
+    <tr v-for="siswa in data">
+    <td>{{ number++ }}</td>
+    <td>{{ siswa.nama }}</td>
+     <td>{{ siswa.kelas }}</td>
+     <td>{{ siswa.Jurusan }}</td>
+  </tr>
+  </table>
+</template>
